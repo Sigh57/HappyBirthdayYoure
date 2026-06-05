@@ -1,65 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Happy Birthday ❤️</title>
 
 <style>
-body{
+body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-    text-align:center;
-    color:white;
-    padding:40px;
+    background: linear-gradient(135deg, #fff6d6, #ffe4e1, #e6ffe6);
+    overflow-x: hidden;
+    color: #333;
 }
 
-.container{
-    max-width:800px;
-    margin:auto;
-    background:rgba(255,255,255,0.15);
-    padding:30px;
-    border-radius:20px;
-    backdrop-filter: blur(10px);
+/* Floating flowers */
+.flower {
+    position: fixed;
+    top: -50px;
+    font-size: 20px;
+    animation: fall linear infinite;
+    opacity: 0.7;
 }
 
-h1{
-    font-size:3em;
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
 }
 
-p{
-    font-size:1.2em;
-    line-height:1.8;
+.center {
+    text-align: center;
+    padding: 50px 20px;
 }
 
-.button{
-    display:inline-block;
-    margin-top:25px;
-    padding:15px 25px;
-    background:white;
-    color:#ff4d6d;
-    text-decoration:none;
-    border-radius:30px;
-    font-weight:bold;
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card {
+    max-width: 800px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.8);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Envelope */
+.envelope {
+    width: 200px;
+    height: 120px;
+    background: white;
+    border: 2px solid #ddd;
+    margin: 30px auto;
+    position: relative;
+    cursor: pointer;
+}
+
+.stamp {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: pink;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.hidden {
+    display: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="center">
 
-<h1>🎉 Happy Birthday My Love 🎉</h1>
+<h1 class="title" id="name"></h1>
+
+<button onclick="openLetter()">Open Your Birthday Surprise 🌼</button>
+
+</div>
+
+<!-- LETTER -->
+<div id="letter" class="card hidden">
+<h2>💌 Happy Birthday YOURE ❤️</h2>
 
 <p>
-You are the best person life has given me.
-You bring so much light and joy to me.
-You deserve the world and so much more.
+You are the best person life has given me. You bring so much light and joy into my life, and you deserve the world and so much more.
 </p>
 
 <p>
-I am thankful to God that I get to see you grow into such an amazing man.
-The way you carry yourself, how you treat the people around you, and your consistent efforts to know God inspire me every day.
+I am thankful to God that I get to see you grow into such an amazing man. The way you carry yourself, how you treat people, and your effort to know God inspire me every day.
 </p>
 
 <p>
@@ -67,19 +125,119 @@ You are amazing in every sense of the word and I will not trade you for anything
 </p>
 
 <p>
-Just as Job 1:10 says, may God continually put His wall of protection around you, your home, and all that concerns you.
-May He cause you to prosper in everything you do.
+Just as Job 1:10 says, may God place a wall of protection around you, your home, and everything that concerns you.
 </p>
 
 <p>
-I love you and I am glad to be here with you. ❤️
+I love you, and I am so glad to be here with you. ❤️
 </p>
 
-<a class="button" href="#">
-🥂 Will You Join Me For Brunch?
+<p><b>With all my love,</b><br>JOJO ❤️</p>
+
+<button onclick="showGallery()">Continue ➝</button>
+</div>
+
+<!-- GALLERY -->
+<div id="gallerySection" class="card hidden">
+
+<h2>📸 Our Memories</h2>
+
+<p>Some of my favorite moments with you ❤️</p>
+
+<a href="https://open.spotify.com/search/past%20lives%20børns" target="_blank">
+<button>🎵 Play Our Song</button>
 </a>
 
+<div class="gallery">
+
+<img src="photo1.jpg">
+<img src="photo01.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+<img src="phot6.jpg">
+<img src="photo7.jpg">
+<img src="photo8.jpg">
+<img src="photo9.jpg">
+<img src="photo13.jpg">
+<img src="photo15.jpg">
+
 </div>
+
+<button onclick="showEnvelope()">Continue to Surprise 💌</button>
+
+</div>
+
+<!-- ENVELOPE -->
+<div id="envelopeSection" class="card hidden" style="text-align:center;">
+
+<h2>Special Delivery 💌</h2>
+
+<div class="envelope" onclick="openEnvelope()">
+<div class="stamp">JOJO</div>
+</div>
+
+<div id="invite" class="hidden">
+<p>Will you join me for brunch as we celebrate you? 🥂❤️</p>
+
+<button>YES</button>
+<button>YES</button>
+
+<p id="response" class="hidden"><b>Excellent choice ❤️ I’ll tell you when you say yes 😉</b></p>
+</div>
+
+</div>
+
+<script>
+
+// name typing animation
+let text = "YOURE";
+let i = 0;
+let nameEl = document.getElementById("name");
+
+function typeName() {
+    if (i < text.length) {
+        nameEl.innerHTML += text[i];
+        i++;
+        setTimeout(typeName, 400);
+    }
+}
+typeName();
+
+function openLetter() {
+    document.getElementById("letter").classList.remove("hidden");
+}
+
+function showGallery() {
+    document.getElementById("gallerySection").classList.remove("hidden");
+}
+
+function showEnvelope() {
+    document.getElementById("envelopeSection").classList.remove("hidden");
+}
+
+function openEnvelope() {
+    document.getElementById("invite").classList.remove("hidden");
+}
+
+document.querySelectorAll("button").forEach(btn => {
+    btn.onclick = function() {
+        document.getElementById("response").classList.remove("hidden");
+    }
+});
+
+// floating flowers
+for (let i = 0; i < 25; i++) {
+    let f = document.createElement("div");
+    f.className = "flower";
+    f.innerHTML = "🌸";
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(f);
+}
+
+</script>
 
 </body>
 </html>
