@@ -1,240 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday ❤️</title>
 
 <style>
-body {
-    margin: 0;
+body{
+    margin:0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #fff6d6, #ffe4e1, #e6ffe6);
-    overflow-x: hidden;
-    color: #333;
+    background: radial-gradient(circle at top, #fff6c7, #ffd6e0, #d6ffe6);
+    overflow-x:hidden;
+    color:#333;
 }
 
-/* Floating flowers */
-.flower {
-    position: fixed;
-    top: -50px;
-    font-size: 20px;
+/* sunrise glow */
+.glow{
+    position:fixed;
+    top:-200px;
+    left:50%;
+    transform:translateX(-50%);
+    width:500px;
+    height:500px;
+    background: radial-gradient(circle, rgba(255,223,120,0.8), transparent 70%);
+    animation: pulse 6s infinite;
+    z-index:-1;
+}
+
+@keyframes pulse{
+    0%,100%{opacity:0.6; transform:translateX(-50%) scale(1);}
+    50%{opacity:1; transform:translateX(-50%) scale(1.2);}
+}
+
+/* floating particles */
+.particle{
+    position:fixed;
+    top:-20px;
+    font-size:18px;
     animation: fall linear infinite;
-    opacity: 0.7;
+    opacity:0.6;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
-    }
+@keyframes fall{
+    to{transform:translateY(110vh);}
 }
 
-.center {
-    text-align: center;
-    padding: 50px 20px;
+.center{
+    text-align:center;
+    padding:60px 20px;
 }
 
-.title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-top: 40px;
+.title{
+    font-size:3rem;
+    font-weight:bold;
+    letter-spacing:2px;
 }
 
-button {
-    padding: 15px 25px;
-    border: none;
-    border-radius: 30px;
-    background: white;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+button{
+    padding:14px 24px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    cursor:pointer;
+    margin-top:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
 }
 
-.card {
-    max-width: 800px;
-    margin: 40px auto;
-    background: rgba(255,255,255,0.8);
-    padding: 30px;
-    border-radius: 20px;
+button:hover{
+    transform:scale(1.05);
 }
 
-/* Gallery */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-    margin-top: 20px;
+/* cards */
+.card{
+    max-width:800px;
+    margin:40px auto;
+    background:rgba(255,255,255,0.85);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
-.gallery img {
-    width: 100%;
-    border-radius: 10px;
+/* gallery */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px;
+    margin-top:15px;
 }
 
-/* Envelope */
-.envelope {
-    width: 200px;
-    height: 120px;
-    background: white;
-    border: 2px solid #ddd;
-    margin: 30px auto;
-    position: relative;
-    cursor: pointer;
+.gallery img{
+    width:100%;
+    border-radius:12px;
+    transition:0.3s;
 }
 
-.stamp {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: pink;
-    padding: 5px;
-    font-size: 12px;
+.gallery img:hover{
+    transform:scale(1.05);
 }
 
-.hidden {
-    display: none;
+/* envelope */
+.envelope{
+    width:220px;
+    height:130px;
+    background:#fff;
+    border-radius:10px;
+    margin:30px auto;
+    position:relative;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.4s;
+}
+
+.envelope:hover{
+    transform:scale(1.05);
+}
+
+.stamp{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:pink;
+    padding:5px 8px;
+    font-size:12px;
+    border-radius:5px;
+}
+
+.hidden{display:none;}
+
+.fade{
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
+<div class="glow"></div>
+
+<!-- INTRO -->
 <div class="center">
+    <h1 class="title" id="name"></h1>
 
-<h1 class="title" id="name"></h1>
-
-<button onclick="openLetter()">Open Your Birthday Surprise 🌼</button>
-
+    <button onclick="openLetter()">Open Your Birthday Surprise 🌼</button>
 </div>
 
 <!-- LETTER -->
-<div id="letter" class="card hidden">
-<h2>💌 Happy Birthday YOURE ❤️</h2>
+<div id="letter" class="card hidden fade">
+    <h2>💌 Happy Birthday YOURE ❤️</h2>
 
-<p>
-You are the best person life has given me. You bring so much light and joy into my life, and you deserve the world and so much more.
-</p>
+    <p>You are the best person life has given me. You bring so much light and joy into my life, and you deserve the world and so much more.</p>
 
-<p>
-I am thankful to God that I get to see you grow into such an amazing man. The way you carry yourself, how you treat people, and your effort to know God inspire me every day.
-</p>
+    <p>I am thankful to God that I get to see you grow into such an amazing man. The way you carry yourself, how you treat people, and your effort to know God inspire me every day.</p>
 
-<p>
-You are amazing in every sense of the word and I will not trade you for anything.
-</p>
+    <p>You are amazing in every sense of the word and I will not trade you for anything.</p>
 
-<p>
-Just as Job 1:10 says, may God place a wall of protection around you, your home, and everything that concerns you.
-</p>
+    <p>Just as Job 1:10 says, may God place a wall of protection around you and everything that concerns you.</p>
 
-<p>
-I love you, and I am so glad to be here with you. ❤️
-</p>
+    <p>I love you ❤️</p>
 
-<p><b>With all my love,</b><br>JOJO ❤️</p>
+    <p><b>With all my love,<br>JOJO ❤️</b></p>
 
-<button onclick="showGallery()">Continue ➝</button>
+    <button onclick="showGallery()">Continue ➝</button>
 </div>
 
 <!-- GALLERY -->
-<div id="gallerySection" class="card hidden">
+<div id="gallery" class="card hidden fade">
+    <h2>📸 Our Memories</h2>
 
-<h2>📸 Our Memories</h2>
+    <a href="https://open.spotify.com/search/past%20lives%20børns" target="_blank">
+        <button>🎵 Play Our Song</button>
+    </a>
 
-<p>Some of my favorite moments with you ❤️</p>
+    <div class="gallery">
+        <img src="photo1.jpg">
+        <img src="photo01.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+        <img src="photo5.jpg">
+        <img src="phot6.jpg">
+        <img src="photo7.jpg">
+        <img src="photo8.jpg">
+        <img src="photo9.jpg">
+        <img src="photo13.jpg">
+        <img src="photo15.jpg">
+    </div>
 
-<a href="https://open.spotify.com/search/past%20lives%20børns" target="_blank">
-<button>🎵 Play Our Song</button>
-</a>
-
-<div class="gallery">
-
-<img src="photo1.jpg">
-<img src="photo01.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-<img src="photo4.jpg">
-<img src="photo5.jpg">
-<img src="phot6.jpg">
-<img src="photo7.jpg">
-<img src="photo8.jpg">
-<img src="photo9.jpg">
-<img src="photo13.jpg">
-<img src="photo15.jpg">
-
-</div>
-
-<button onclick="showEnvelope()">Continue to Surprise 💌</button>
-
+    <button onclick="showEnvelope()">Continue 💌</button>
 </div>
 
 <!-- ENVELOPE -->
-<div id="envelopeSection" class="card hidden" style="text-align:center;">
+<div id="envelope" class="card hidden fade" style="text-align:center;">
+    <h2>Special Delivery ✉️</h2>
 
-<h2>Special Delivery 💌</h2>
+    <div class="envelope" onclick="openEnvelope()">
+        <div class="stamp">JOJO</div>
+    </div>
 
-<div class="envelope" onclick="openEnvelope()">
-<div class="stamp">JOJO</div>
-</div>
+    <div id="invite" class="hidden fade">
+        <p>Will you join me for brunch? 🥂❤️</p>
 
-<div id="invite" class="hidden">
-<p>Will you join me for brunch as we celebrate you? 🥂❤️</p>
+        <button onclick="yes()">YES</button>
+        <button onclick="yes()">YES</button>
 
-<button>YES</button>
-<button>YES</button>
-
-<p id="response" class="hidden"><b>Excellent choice ❤️ I’ll tell you when you say yes 😉</b></p>
-</div>
-
+        <p id="response" class="hidden fade"><b>Good choice 😌❤️ I’ll tell you when you say yes…</b></p>
+    </div>
 </div>
 
 <script>
 
-// name typing animation
+// typing effect
 let text = "YOURE";
 let i = 0;
-let nameEl = document.getElementById("name");
+let name = document.getElementById("name");
 
-function typeName() {
-    if (i < text.length) {
-        nameEl.innerHTML += text[i];
+function type(){
+    if(i < text.length){
+        name.innerHTML += text[i];
         i++;
-        setTimeout(typeName, 400);
+        setTimeout(type, 400);
     }
 }
-typeName();
+type();
 
-function openLetter() {
+function openLetter(){
     document.getElementById("letter").classList.remove("hidden");
 }
 
-function showGallery() {
-    document.getElementById("gallerySection").classList.remove("hidden");
+function showGallery(){
+    document.getElementById("gallery").classList.remove("hidden");
 }
 
-function showEnvelope() {
-    document.getElementById("envelopeSection").classList.remove("hidden");
+function showEnvelope(){
+    document.getElementById("envelope").classList.remove("hidden");
 }
 
-function openEnvelope() {
+function openEnvelope(){
     document.getElementById("invite").classList.remove("hidden");
 }
 
-document.querySelectorAll("button").forEach(btn => {
-    btn.onclick = function() {
-        document.getElementById("response").classList.remove("hidden");
-    }
-});
+function yes(){
+    document.getElementById("response").classList.remove("hidden");
+}
 
-// floating flowers
-for (let i = 0; i < 25; i++) {
-    let f = document.createElement("div");
-    f.className = "flower";
-    f.innerHTML = "🌸";
-    f.style.left = Math.random() * 100 + "vw";
-    f.style.animationDuration = (5 + Math.random() * 5) + "s";
-    document.body.appendChild(f);
+// floating particles
+for(let i=0;i<30;i++){
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.innerHTML = "🌸";
+    p.style.left = Math.random()*100 + "vw";
+    p.style.animationDuration = (5 + Math.random()*6) + "s";
+    document.body.appendChild(p);
 }
 
 </script>
